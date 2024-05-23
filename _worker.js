@@ -510,7 +510,7 @@ export default {
 					
 						if (socks5Data) {
 							const socks5 = getRandomProxyByMatch(lowerAddressid, socks5Data);
-							path = `/${socks5}`;
+							path = `/?${socks5}`;
 						} else {
 							// 遍历CMproxyIPs数组查找匹配项
 							for (let item of CMproxyIPs) {
@@ -522,11 +522,11 @@ export default {
 						
 							if (foundProxyIP) {
 								// 如果找到匹配的proxyIP，赋值给path
-								path = `/proxyIP=${foundProxyIP}`;
+								path = `/?proxyip=${foundProxyIP}`;
 							} else {
 								// 如果没有找到匹配项，随机选择一个proxyIP
 								const randomProxyIP = proxyIPs[Math.floor(Math.random() * proxyIPs.length)];
-								path = `/proxyIP=${randomProxyIP}`;
+								path = `/?proxyip=${randomProxyIP}`;
 							}
 						}
 					}
@@ -579,7 +579,7 @@ export default {
 				
 					if (socks5Data) {
 						const socks5 = getRandomProxyByMatch(lowerAddressid, socks5Data);
-						path = `/${socks5}`;
+						path = `/?${socks5}`;
 					} else {
 						// 遍历CMproxyIPs数组查找匹配项
 						for (let item of CMproxyIPs) {
@@ -591,11 +591,11 @@ export default {
 					
 						if (foundProxyIP) {
 							// 如果找到匹配的proxyIP，赋值给path
-							path = `/proxyIP=${foundProxyIP}`;
+							path = `/?proxyip=${foundProxyIP}`;
 						} else {
 							// 如果没有找到匹配项，随机选择一个proxyIP
 							const randomProxyIP = proxyIPs[Math.floor(Math.random() * proxyIPs.length)];
-							path = `/proxyIP=${randomProxyIP}`;
+							path = `/?proxyip=${randomProxyIP}`;
 						}
 					}
 				}
@@ -611,11 +611,11 @@ export default {
 				}
 
 				if (协议类型 == 'Trojan'){
-					const trojanLink = `trojan://${uuid}@${address}:${port}?security=tls&sni=${sni}&fp=randomized&type=ws&host=${伪装域名}&path=${encodeURIComponent(最终路径)}#${encodeURIComponent(addressid + 节点备注)}`;
+					const trojanLink = `trojan://${uuid}@${address}:${port}?security=tls&sni=${sni}&alpn=http%2F1.1&fp=randomized&type=ws&host=${伪装域名}&path=${encodeURIComponent(最终路径)}#${encodeURIComponent(addressid + 节点备注)}`;
 
 					return trojanLink;
 				} else {
-					const vlessLink = `vless://${uuid}@${address}:${port}?encryption=none&security=tls&sni=${sni}&fp=random&type=ws&host=${伪装域名}&path=${encodeURIComponent(最终路径)}#${encodeURIComponent(addressid + 节点备注)}`;
+					const vlessLink = `vless://${uuid}@${address}:${port}?encryption=none&security=tls&sni=${sni}&alpn=http%2F1.1&fp=random&type=ws&host=${伪装域名}&path=${encodeURIComponent(最终路径)}#${encodeURIComponent(addressid + 节点备注)}`;
 			
 					return vlessLink;
 				}
